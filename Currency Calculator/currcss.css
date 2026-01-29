@@ -89,8 +89,6 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
-    margin: 0;
-}
 
 .select {
     display: flex;
@@ -208,18 +206,4 @@ button:active {
         flex: 1;
         min-width: calc(50% - 0.5rem);
     }
-}
-
-button{
-    width: 100%;
-    border: none;
-    border: 1px solid lightgray;
-    border-radius: 1rem;
-    background-color: #3a3f5c;
-    color: lightcyan;
-    font-size: 1rem;
-}
-
-img{
-    width: 1.75rem;
 }

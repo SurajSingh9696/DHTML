@@ -139,7 +139,8 @@ input[type="number"]:read-only {
     cursor: not-allowed;
 }
 
-.swap-btn {0px 14px;
+.swap-btn {
+    padding: 10px 14px;
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
@@ -148,8 +149,7 @@ input[type="number"]:read-only {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-bottom: 2px;
-    flex-shrink: 00.3s ease;
-    margin-top: 32px;
+    flex-shrink: 0;
 }
 
 .swap-btn:hover {
@@ -192,7 +192,8 @@ input[type="number"]:read-only {
 }
 
 @media (max-width: 600px) {
-    .container {0px;
+    .container {
+        padding: 20px;
     }
 
     h1 {
@@ -224,7 +225,6 @@ input[type="number"]:read-only {
     }
 
     .swap-btn:hover {
-        transform: scale(1.05
-        transform: rotate(270deg) scale(1.1);
+        transform: scale(1.05);
     }
 }
