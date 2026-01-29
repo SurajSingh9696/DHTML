@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CalcPro - Advanced Calculator</title>
+    <link rel="stylesheet" href="calcstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-calculator"></i>
+                <h1>CalcPro</h1>
+            </div>
+            <p class="subtitle">Advanced Scientific Calculator</p>
+        </header>
+
+        <div class="calculator">
+            <div class="display-section">
+                <div class="history-display" id="historyDisplay"></div>
+                <div class="main-display" id="mainDisplay">0</div>
+            </div>
+
+            <div class="mode-toggle">
+                <button class="mode-btn active" data-mode="basic">
+                    <i class="fas fa-calculator"></i>
+                    Basic
+                </button>
+                <button class="mode-btn" data-mode="scientific">
+                    <i class="fas fa-flask"></i>
+                    Scientific
+                </button>
+            </div>
+
+            <div class="memory-section">
+                <button class="memory-btn" id="memoryClear" title="Clear Memory">
+                    <i class="fas fa-trash-alt"></i> MC
+                </button>
+                <button class="memory-btn" id="memoryRecall" title="Recall Memory">
+                    <i class="fas fa-download"></i> MR
+                </button>
+                <button class="memory-btn" id="memoryAdd" title="Add to Memory">
+                    <i class="fas fa-plus"></i> M+
+                </button>
+                <button class="memory-btn" id="memorySubtract" title="Subtract from Memory">
+                    <i class="fas fa-minus"></i> M-
+                </button>
+                <div class="memory-indicator" id="memoryIndicator">
+                    <i class="fas fa-save"></i>
+                    <span id="memoryValue">0</span>
+                </div>
+            </div>
+
+            <div class="buttons-container" id="buttonsContainer">
+                <div class="buttons-grid basic-mode">
+                    <button class="btn function-btn" data-action="clear">
+                        <i class="fas fa-c"></i> AC
+                    </button>
+                    <button class="btn function-btn" data-action="delete">
+                        <i class="fas fa-delete-left"></i>
+                    </button>
+                    <button class="btn function-btn" data-action="percent">%</button>
+                    <button class="btn operator-btn" data-value="/">÷</button>
+
+                    <button class="btn number-btn" data-value="7">7</button>
+                    <button class="btn number-btn" data-value="8">8</button>
+                    <button class="btn number-btn" data-value="9">9</button>
+                    <button class="btn operator-btn" data-value="*">×</button>
+
+                    <button class="btn number-btn" data-value="4">4</button>
+                    <button class="btn number-btn" data-value="5">5</button>
+                    <button class="btn number-btn" data-value="6">6</button>
+                    <button class="btn operator-btn" data-value="-">−</button>
+
+                    <button class="btn number-btn" data-value="1">1</button>
+                    <button class="btn number-btn" data-value="2">2</button>
+                    <button class="btn number-btn" data-value="3">3</button>
+                    <button class="btn operator-btn" data-value="+">+</button>
+
+                    <button class="btn number-btn" data-value="0">0</button>
+                    <button class="btn number-btn" data-value=".">.</button>
+                    <button class="btn function-btn" data-action="negate">+/−</button>
+                    <button class="btn equals-btn" data-action="equals">=</button>
+                </div>
+
+                <div class="buttons-grid scientific-mode hidden">
+                    <button class="btn function-btn" data-action="clear">AC</button>
+                    <button class="btn function-btn" data-action="delete">
+                        <i class="fas fa-delete-left"></i>
+                    </button>
+                    <button class="btn function-btn" data-action="percent">%</button>
+                    <button class="btn operator-btn" data-value="/">÷</button>
+                    <button class="btn special-btn" data-action="sin">sin</button>
+
+                    <button class="btn number-btn" data-value="7">7</button>
+                    <button class="btn number-btn" data-value="8">8</button>
+                    <button class="btn number-btn" data-value="9">9</button>
+                    <button class="btn operator-btn" data-value="*">×</button>
+                    <button class="btn special-btn" data-action="cos">cos</button>
+
+                    <button class="btn number-btn" data-value="4">4</button>
+                    <button class="btn number-btn" data-value="5">5</button>
+                    <button class="btn number-btn" data-value="6">6</button>
+                    <button class="btn operator-btn" data-value="-">−</button>
+                    <button class="btn special-btn" data-action="tan">tan</button>
+
+                    <button class="btn number-btn" data-value="1">1</button>
+                    <button class="btn number-btn" data-value="2">2</button>
+                    <button class="btn number-btn" data-value="3">3</button>
+                    <button class="btn operator-btn" data-value="+">+</button>
+                    <button class="btn special-btn" data-action="sqrt">√</button>
+
+                    <button class="btn number-btn" data-value="0">0</button>
+                    <button class="btn number-btn" data-value=".">.</button>
+                    <button class="btn special-btn" data-action="power">x²</button>
+                    <button class="btn operator-btn" data-value="^">xʸ</button>
+                    <button class="btn equals-btn" data-action="equals">=</button>
+
+                    <button class="btn special-btn" data-action="pi">π</button>
+                    <button class="btn special-btn" data-action="e">e</button>
+                    <button class="btn special-btn" data-action="log">log</button>
+                    <button class="btn special-btn" data-action="ln">ln</button>
+                    <button class="btn function-btn" data-action="negate">+/−</button>
+                </div>
+            </div>
+
+            <button class="history-toggle" id="historyToggle">
+                <i class="fas fa-history"></i>
+                History
+            </button>
+        </div>
+
+        <div class="history-panel" id="historyPanel">
+            <div class="history-header">
+                <h3><i class="fas fa-clock-rotate-left"></i> Calculation History</h3>
+                <button class="clear-history-btn" id="clearHistory">
+                    <i class="fas fa-trash"></i>
+                    Clear
+                </button>
+            </div>
+            <div class="history-list" id="historyList">
+                <div class="empty-history">
+                    <i class="fas fa-inbox"></i>
+                    <p>No history yet</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>Calculate with <i class="fas fa-heart"></i> precision</p>
+        </footer>
+    </div>
+
+    <script src="calcscript.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskFlow - Advanced Todo List</title>
+    <link rel="stylesheet" href="todostyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container">
+        <header class="header">
+            <div class="header-content">
+                <i class="fas fa-clipboard-check"></i>
+                <h1>TaskFlow</h1>
+            </div>
+            <p class="subtitle">Organize your day, accomplish your goals</p>
+        </header>
+
+        <div class="stats-section">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-tasks"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="totalTasks">0</h3>
+                    <p>Total Tasks</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon active-icon">
+                    <i class="fas fa-spinner"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="activeTasks">0</h3>
+                    <p>Active</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon completed-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="completedTasks">0</h3>
+                    <p>Completed</p>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon progress-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-info">
+                    <h3 id="progressPercent">0%</h3>
+                    <p>Progress</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="add-task-section">
+            <h2 class="section-title">
+                <i class="fas fa-plus-circle"></i>
+                Add New Task
+            </h2>
+            <form id="taskForm" class="task-form">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <input type="text" id="taskTitle" placeholder="What do you need to do?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="taskCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="work">💼 Work</option>
+                            <option value="personal">👤 Personal</option>
+                            <option value="shopping">🛒 Shopping</option>
+                            <option value="health">🏃 Health</option>
+                            <option value="learning">📚 Learning</option>
+                            <option value="finance">💰 Finance</option>
+                            <option value="home">🏠 Home</option>
+                            <option value="other">📌 Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <select id="taskPriority" required>
+                            <option value="">Select Priority</option>
+                            <option value="high">🔴 High</option>
+                            <option value="medium">🟡 Medium</option>
+                            <option value="low">🟢 Low</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="date" id="taskDueDate" required>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-plus"></i>
+                            Add Task
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="controls-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Search tasks...">
+            </div>
+
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-list"></i> All
+                </button>
+                <button class="filter-btn" data-filter="active">
+                    <i class="fas fa-clock"></i> Active
+                </button>
+                <button class="filter-btn" data-filter="completed">
+                    <i class="fas fa-check"></i> Completed
+                </button>
+            </div>
+
+            <div class="sort-box">
+                <select id="sortSelect">
+                    <option value="date-asc">Date (Oldest)</option>
+                    <option value="date-desc">Date (Newest)</option>
+                    <option value="priority">Priority</option>
+                    <option value="title">Title (A-Z)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="tasks-section">
+            <div id="tasksList" class="tasks-list">
+            </div>
+            <div id="emptyState" class="empty-state">
+                <i class="fas fa-clipboard-list"></i>
+                <p>No tasks yet</p>
+                <span>Create your first task to get started</span>
+            </div>
+        </div>
+
+        <div class="quick-actions">
+            <button class="quick-btn" id="clearCompleted">
+                <i class="fas fa-broom"></i>
+                Clear Completed
+            </button>
+            <button class="quick-btn" id="deleteAll">
+                <i class="fas fa-trash-alt"></i>
+                Delete All
+            </button>
+        </div>
+
+        <footer class="footer">
+            <p>Stay productive with <i class="fas fa-heart"></i> TaskFlow</p>
+        </footer>
+    </div>
+
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-edit"></i> Edit Task</h3>
+                <button class="close-btn" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="editForm">
+                <div class="form-group">
+                    <label>Task Title</label>
+                    <input type="text" id="editTaskTitle" required>
+                </div>
+                <div class="form-group">
+                    <label>Category</label>
+                    <select id="editTaskCategory" required>
+                        <option value="work">💼 Work</option>
+                        <option value="personal">👤 Personal</option>
+                        <option value="shopping">🛒 Shopping</option>
+                        <option value="health">🏃 Health</option>
+                        <option value="learning">📚 Learning</option>
+                        <option value="finance">💰 Finance</option>
+                        <option value="home">🏠 Home</option>
+                        <option value="other">📌 Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Priority</label>
+                    <select id="editTaskPriority" required>
+                        <option value="high">🔴 High</option>
+                        <option value="medium">🟡 Medium</option>
+                        <option value="low">🟢 Low</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Due Date</label>
+                    <input type="date" id="editTaskDueDate" required>
+                </div>
+                <button type="submit" class="modal-submit-btn">
+                    <i class="fas fa-save"></i>
+                    Save Changes
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="todoscript.js"></script>
+</body>
+</html>
