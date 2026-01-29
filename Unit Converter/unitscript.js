@@ -1,192 +1,179 @@
-const lengthUnits = {
-    "Meter": "m",
-    "Kilometer": "km",
-    "Centimeter": "cm",
-    "Millimeter": "mm",
-    "Mile": "mi",
-    "Yard": "yd",
-    "Foot": "ft",
-    "Inch": "in",
-  };
-  
-  const volumeUnits = {
-    "Liter": "l",
-    "Milliliter": "ml",
-    "Cubic Meter": "m3",
-    "Cubic Centimeter": "cm3",
-    "Gallon": "gal",
-    "Pint": "pt",
-    "Quart": "qt",
-  };
-  
-  const areaUnits = {
-    "Square Meter": "m2",
-    "Square Kilometer": "km2",
-    "Square Centimeter": "cm2",
-    "Square Mile": "mi2",
-    "Acre": "ac",
-    "Hectare": "ha",
-  };
-  
-  const massUnits = {
-    "Kilogram": "kg",
-    "Gram": "g",
-    "Milligram": "mg",
-    "Pound": "lb",
-    "Ounce": "oz",
-    "Ton": "t",
-  };
-  
-  const dataUnits = {
-    "Byte": "b",
-    "Kilobyte": "kb",
-    "Megabyte": "mb",
-    "Gigabyte": "gb",
-    "Terabyte": "tb",
-    "Petabyte": "pb",
-  };
-  
-  const speedUnits = {
-    "Meters Per Second": "m/s",
-    "Kilometers Per Hour": "km/h",
-    "Miles Per Hour": "mph",
-    "Knot": "kt",
-  };
-  
-  const timeUnits = {
-    "Second": "s",
-    "Minute": "min",
-    "Hour": "h",
-    "Day": "d",
-    "Week": "wk",
-    "Year": "yr",
-  };
-  
-  const temperatureUnits = {
-    "Celsius": "C",
-    "Fahrenheit": "F",
-    "Kelvin": "K",
-  };
-  
-
-  
-
-const but = document.querySelectorAll("button");
-
-const unitbut = document.querySelectorAll(".button button");
-
-const selectFrom = document.querySelector("#from");
-
-const selectTo = document.querySelector("#to");
-
-const inputFrom = document.querySelector(".infrom");
-
-const inputTo = document.querySelector(".into");
-
-
-const image = document.querySelector("#img");
-
-
-let URL = "";
-
-
-unitbut.forEach((button) =>{
-    button.addEventListener("click", () => {
-        but.forEach((butt)=>{
-            butt.classList.remove("bor");
-        })
-        button.classList.add("bor");
-    })
-})
-
-function optionfiller(options){
-    console.log(options);
-    selectFrom.innerHTML = "";
-    selectTo.innerHTML = "";
-    for(let opt in options){
-        let option1 = document.createElement("option");
-        option1.value = options[opt];
-        option1.textContent = opt;
-        let option2 = document.createElement("option");
-        option2.value = options[opt];
-        option2.textContent = opt;
-        selectFrom.appendChild(option1);
-        selectTo.appendChild(option2);
+const categoryUnits = {
+    length: {
+        "Millimeter": 0.001,
+        "Centimeter": 0.01,
+        "Meter": 1,
+        "Kilometer": 1000,
+        "Inch": 0.0254,
+        "Foot": 0.3048,
+        "Yard": 0.9144,
+        "Mile": 1609.34
+    },
+    area: {
+        "Square Millimeter": 0.000001,
+        "Square Centimeter": 0.0001,
+        "Square Meter": 1,
+        "Square Kilometer": 1000000,
+        "Square Inch": 0.00064516,
+        "Square Foot": 0.092903,
+        "Square Yard": 0.836127,
+        "Square Mile": 2589988,
+        "Hectare": 10000,
+        "Acre": 4046.86
+    },
+    volume: {
+        "Milliliter": 0.000001,
+        "Liter": 0.001,
+        "Cubic Meter": 1,
+        "Cubic Centimeter": 0.000001,
+        "Gallon (US)": 0.00378541,
+        "Pint (US)": 0.000473176,
+        "Quart (US)": 0.000946353,
+        "Cup (US)": 0.000236588
+    },
+    mass: {
+        "Milligram": 0.000001,
+        "Gram": 0.001,
+        "Kilogram": 1,
+        "Ounce": 0.0283495,
+        "Pound": 0.453592,
+        "Ton": 1000
+    },
+    data: {
+        "Byte": 1,
+        "Kilobyte": 1024,
+        "Megabyte": 1048576,
+        "Gigabyte": 1073741824,
+        "Terabyte": 1099511627776,
+        "Petabyte": 1125899906842624
+    },
+    speed: {
+        "Meters Per Second": 1,
+        "Kilometers Per Hour": 0.277778,
+        "Miles Per Hour": 0.44704,
+        "Knot": 0.51444
+    },
+    time: {
+        "Millisecond": 0.001,
+        "Second": 1,
+        "Minute": 60,
+        "Hour": 3600,
+        "Day": 86400,
+        "Week": 604800,
+        "Month": 2592000,
+        "Year": 31536000
+    },
+    temperature: {
+        "Celsius": "C",
+        "Fahrenheit": "F",
+        "Kelvin": "K"
     }
-}
+};
 
-but.forEach((button) =>{
-    button.addEventListener("click", () => {
-        let butval = button.getAttribute("id");
-        if(butval === "length"){
-            optionfiller(lengthUnits);
-        }
-        else if(butval === "time"){
-            optionfiller(timeUnits);
-        }
-        else if(butval === "temperature"){
-            optionfiller(temperatureUnits);
-        }
-        else if(butval === "area"){
-            optionfiller(areaUnits);
-        }
-        else if(butval === "mass"){
-            optionfiller(massUnits);
-        }
-        else if(butval === "volume"){
-            optionfiller(volumeUnits);
-        }
-        else if(butval === "speed"){
-            optionfiller(speedUnits);
-        }
-        else if(butval === "data"){
-            optionfiller(dataUnits);
-        }
-        else if(butval === "reset"){
-            inputTo.value = "";
-            inputFrom.value = "";
-        }
-        else{
-            if(butval === "convert"){
-                URL = `https://api.apiverve.com/v1/unitconverter?value=${inputFrom.value}&from=${selectFrom.value}&to=${selectTo.value}`;
-                console.log(URL);
-        const headers = {
-        'x-api-key': 'your api key here',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-        };
+const tempConversions = {
+    'C-F': (c) => (c * 9/5) + 32,
+    'C-K': (c) => c + 273.15,
+    'F-C': (f) => (f - 32) * 5/9,
+    'F-K': (f) => ((f - 32) * 5/9) + 273.15,
+    'K-C': (k) => k - 273.15,
+    'K-F': (k) => ((k - 273.15) * 9/5) + 32
+};
 
-async function fetchData() {
-  try {
-    const response = await fetch(URL , {
-      method: 'GET',
-      headers: headers,
+let currentCategory = 'length';
+
+const categoryBtns = document.querySelectorAll('.category-btn');
+const fromUnit = document.querySelector('#from-unit');
+const toUnit = document.querySelector('#to-unit');
+const fromValue = document.querySelector('#from-value');
+const toValue = document.querySelector('#to-value');
+const convertBtn = document.querySelector('.convert-btn');
+const resetBtn = document.querySelector('.reset-btn');
+const swapBtn = document.querySelector('.swap-btn');
+
+const populateUnits = (category) => {
+    const units = categoryUnits[category];
+    fromUnit.innerHTML = '';
+    toUnit.innerHTML = '';
+
+    Object.keys(units).forEach((unit, index) => {
+        const option1 = document.createElement('option');
+        option1.value = unit;
+        option1.textContent = unit;
+        
+        const option2 = document.createElement('option');
+        option2.value = unit;
+        option2.textContent = unit;
+        
+        fromUnit.appendChild(option1);
+        toUnit.appendChild(option2);
+        
+        if (index === 1) {
+            option2.selected = true;
+        }
     });
 
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    toValue.value = '';
+};
+
+const performConversion = () => {
+    const fromVal = parseFloat(fromValue.value);
+    
+    if (isNaN(fromVal) || fromVal === '') {
+        toValue.value = '';
+        return;
     }
 
-    const data = await response.json(); // Parse the response as JSON
-    let result = data.data.result.result;
-    console.log(result); // Handle the parsed JSON data
-    inputTo.value = result;
-  } catch (error) {
-    console.error('Error:', error); // Handle any errors
-  }
-}
-
-// Call the async function
-fetchData();
-
-            }
+    if (currentCategory === 'temperature') {
+        const from = fromUnit.value;
+        const to = toUnit.value;
+        
+        if (from === to) {
+            toValue.value = fromVal.toFixed(2);
+        } else {
+            const key = `${from[0]}-${to[0]}`;
+            const result = tempConversions[key](fromVal);
+            toValue.value = result.toFixed(2);
         }
-    })
-})
-let temp = "";
+    } else {
+        const from = categoryUnits[currentCategory][fromUnit.value];
+        const to = categoryUnits[currentCategory][toUnit.value];
+        const result = (fromVal * from) / to;
+        toValue.value = result.toFixed(6).replace(/\.?0+$/, '');
+    }
+};
 
-image.addEventListener("click" , ()=>{
-    temp = selectFrom.value;
-    selectFrom.value = selectTo.value;
-    selectTo.value = temp;
-})
+const swapUnits = () => {
+    const tempUnit = fromUnit.value;
+    fromUnit.value = toUnit.value;
+    toUnit.value = tempUnit;
+
+    if (toValue.value && toValue.value !== '') {
+        fromValue.value = toValue.value;
+        performConversion();
+    }
+};
+
+const resetValues = () => {
+    fromValue.value = '';
+    toValue.value = '';
+    fromValue.focus();
+};
+
+categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategory = btn.getAttribute('data-category');
+        populateUnits(currentCategory);
+        resetValues();
+    });
+});
+
+convertBtn.addEventListener('click', performConversion);
+swapBtn.addEventListener('click', swapUnits);
+resetBtn.addEventListener('click', resetValues);
+fromValue.addEventListener('input', performConversion);
+fromUnit.addEventListener('change', performConversion);
+toUnit.addEventListener('change', performConversion);
+
+populateUnits('length');

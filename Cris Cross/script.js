@@ -1,10 +1,8 @@
-let but = document.querySelectorAll(".box");
-let res = document.querySelector("#Reset");
+const boxes = document.querySelectorAll(".box");
+const resetBtn = document.querySelector("#Reset");
 
-
-let turnO = true;
-
-const winpatterns = [
+let isPlayerX = true;
+const winPatterns = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -13,90 +11,66 @@ const winpatterns = [
     [2, 5, 8],
     [0, 4, 8],
     [2, 4, 6]
-
 ];
 
-let reset =  ()=>{
-    but.forEach((box)=>{
+let gameActive = true;
+
+const reset = () => {
+    boxes.forEach((box) => {
         box.disabled = false;
         box.textContent = "";
-        turnO = true;
-    })
+    });
+    isPlayerX = true;
+    gameActive = true;
 };
 
-let check = 0;
-let check2 = 0;
-let win = "";
+const checkWinner = () => {
+    for (let pattern of winPatterns) {
+        const [a, b, c] = pattern;
+        if (boxes[a].textContent && 
+            boxes[a].textContent === boxes[b].textContent &&
+            boxes[b].textContent === boxes[c].textContent) {
+            return boxes[a].textContent;
+        }
+    }
+    return null;
+};
 
-but.forEach((box)=>{
-    box.addEventListener("click" , ()=>{
-        console.log("box was clicked");
-        if(turnO === true){
-            box.textContent = "O";
-            turnO = false;
-        }
-        else{
-            box.textContent = "X";
-            turnO = true;
-        }
+const isGameDrawn = () => {
+    return Array.from(boxes).every(box => box.textContent !== "");
+};
+
+boxes.forEach((box) => {
+    box.addEventListener("click", () => {
+        if (!gameActive || box.textContent) return;
+
+        box.textContent = isPlayerX ? "X" : "O";
         box.disabled = true;
-        
-        
-        
-        
 
-
-        winner();
-        if(check == 1){
-            setTimeout(()=>{
-                alert(`Player ${win} wins. Congratulation`);
+        const winner = checkWinner();
+        if (winner) {
+            setTimeout(() => {
+                alert(`Player ${winner} wins! Congratulations!`);
                 reset();
-            } , 500);
-            check = 0;
-           
+            }, 300);
+            gameActive = false;
+            return;
         }
-        but.forEach((button) =>{
-            if(button.textContent == "X" || button.textContent == "O"){
-                check2++;
-                console.log(check2);
-            }
-            if(check2 == 9){
-                setTimeout(()=>{
-                    alert(`No Player wins. Congratulation`);
-                    reset();
-                } , 500);
-            }
-           
-            });
-        check2 = 0;
 
+        if (isGameDrawn()) {
+            setTimeout(() => {
+                alert("Game Draw! It's a tie.");
+                reset();
+            }, 300);
+            gameActive = false;
+            return;
+        }
+
+        isPlayerX = !isPlayerX;
     });
-    
 });
 
-
-
-const winner = () =>{
-    for(let pat of winpatterns){
-       if(but[pat[0]].innerText === but[pat[1]].innerText){
-        if(but[pat[1]].innerText === but[pat[2]].innerText){
-            if(but[pat[0]].innerText === "X" || but[pat[0]].innerText === "O"){
-            win = but[pat[0]].innerText;
-            check = 1;
-            
-        }
-          
-        }
-
-       }
-
-    }
-
-};
-
-
-
-res.addEventListener("click", reset);
+resetBtn.addEventListener("click", reset);
 
 
 

@@ -1,99 +1,184 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
-h1{
-    width: 100vw;
-    height: 10vh;
-    background-color: #222E50;
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #e9d985;
+    padding: 20px;
 }
-.choices{
-    width: 100vw;
-    height: 40vh;
-    background-color: #269bb2;
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -0.8px;
+}
+
+.subtitle {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+.game-section {
+    padding: 2rem;
+}
+
+.instruction {
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.choices {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.choice {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid #667eea;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-size: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choice:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+}
+
+.choice:active {
+    transform: translateY(-2px);
+}
+
+.msg-section {
+    background: #f5f5f5;
+    padding: 2rem;
+    text-align: center;
+}
+
+#msg {
+    background: white;
+    border: 2px solid #667eea;
+    color: #333;
+    padding: 1.5rem;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: #f5f5f5;
+}
+
+.player,
+.comp {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
-.choice{
-    width: 12vw;
-    height: 12vw;
-    border-radius: 100%;
+
+.score-item {
+    text-align: center;
+}
+
+.score-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.score-item p:last-child {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.button-section {
+    padding: 2rem;
+    text-align: center;
+}
+
+.reset-btn {
+    padding: 0.9rem 2.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
     border: none;
-    font-size: 4vw;
-    color: #BCD8C1;
-    
-}
-#Stone{
-   
-    background-image: url(https://files.facepunch.com/rust/item/stones_512.png);
-    background-size: cover;
-    
-}
-#Paper{
-    background-image: url(https://siddhartha-1234.github.io/Stone_paper_scissor.io/img/paper.png);
-    background-size: cover;
-}
-#Scissor{
-    background-image: url(https://siddhartha-1234.github.io/Stone_paper_scissor.io/img/scissor.png);
-    background-size: cover;
-}
-.msg{
-    height: 15vh;
-    background-color: #269bb2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#msg{
-    width: 80vw;
-    height: 10vh;
-    background-color: #F7B267;
     border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 6vh;
-    color: #d71310;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
 }
-.score{
-    width: 100vw;
-    height: 35vh;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: #222E50;
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
 }
-.player{
-    width: 25vw;
-    height: 20vh;
-    background-color: #F7B267;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 7vh;
-    gap: 10px;
-    color: #d77710;
-    border-radius: 20px;
-}
-.comp{
-    width: 25vw;
-    height: 20vh;
-    background-color: #F7B267;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 7vh;
-    gap: 10px;
-    color: #d77710;
-    border-radius: 20px;
-}
-.choice:hover{
-    border: 2px solid black;
-    opacity: .8;
+
+@media (max-width: 500px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .choice {
+        width: 70px;
+        height: 70px;
+        font-size: 35px;
+    }
+
+    .score-item p:last-child {
+        font-size: 2rem;
+    }
+
+    #msg {
+        font-size: 1rem;
+    }
 }
 

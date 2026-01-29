@@ -1,30 +1,49 @@
-# Temperature Calculator
+# Temperature Converter
 
 ## Description
-A simple web application to convert temperatures between Celsius, Fahrenheit, and Kelvin. The app provides an easy-to-use interface to select the input and output units and perform conversions instantly.
+A modern temperature conversion tool that converts between Celsius, Fahrenheit, and Kelvin. Features a clean, intuitive interface with real-time conversions and responsive design.
 
 ## Features
-- Convert temperature between Celsius, Fahrenheit, and Kelvin
-- Swap input and output units with a click
-- Input validation for numeric values
-- Responsive and user-friendly interface
+- **Three Temperature Scales**: Celsius, Fahrenheit, and Kelvin
+- **Real-Time Conversion**: Instant results as you type
+- **Bi-Directional**: Easily swap input and output units
+- **Input Validation**: Handles invalid inputs gracefully
+- **Modern UI**: Gradient backgrounds with smooth animations
+- **Responsive Design**: Works on all devices
+- **Visual Feedback**: Clear display of conversion values
+
+## Temperature Scales
+- **Celsius (C)**: Metric temperature scale
+- **Fahrenheit (F)**: Imperial temperature scale
+- **Kelvin (K)**: Absolute temperature scale used in science
+
+## Conversion Formulas
+- C to F: (C × 9/5) + 32
+- C to K: C + 273.15
+- F to C: (F - 32) × 5/9
+- K to C: K - 273.15
 
 ## Tech Stack
-- HTML
-- CSS
-- JavaScript
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling with gradients
+- **JavaScript (Vanilla)**: Real-time conversion logic
+- **Google Fonts**: Poppins
 
-## Installation and Usage
-1. Open `tempindex.html` in a web browser.
-2. Select the input and output temperature units.
-3. Enter the temperature value to convert.
-4. Click the "Convert" button to see the result.
-5. Click the swap icon to switch input and output units.
+## How to Use
+1. Open `tempindex.html` in a web browser
+2. Select source temperature unit (From)
+3. Select target temperature unit (To)
+4. Enter temperature value
+5. Click "Convert" to see result
+6. Use swap button to reverse units
 
 ## Files
-- `tempindex.html`: Main HTML file for the UI.
-- `tempstyle.css`: CSS styles for the app.
-- `tempscript.js`: JavaScript logic for temperature conversion.
+- `tempindex.html` - Main HTML structure
+- `tempstyle.css` - Modern responsive styling
+- `tempscript.js` - Temperature conversion logic
 
-## License
-This project is open source and available under the MIT License.
+## Browser Support
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)

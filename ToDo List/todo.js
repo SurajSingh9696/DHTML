@@ -1,104 +1,86 @@
-const main = document.querySelector("main");
+const addBtn = document.querySelector('#add-btn');
+const modal = document.querySelector('#add-modal');
+const cancelBtn = document.querySelector('#cancel-btn');
+const saveBtn = document.querySelector('#save-btn');
+const taskInput = document.querySelector('#task-input');
+const tasksList = document.querySelector('#tasks-list');
 
-const divClone = document.querySelector(".data");
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-const input = document.querySelector("#todo");
+const saveTasks = () => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+};
 
-const add = document.querySelector("#add");
+const renderTasks = () => {
+    tasksList.innerHTML = '';
 
-const add2 = document.querySelector("#add2");
-
-const cancel = document.querySelector("#cancel")
-
-const hidden = document.querySelector(".above");
-
-const refresh = document.querySelector("#refresh");
-
-if (localStorage.getItem("data") == null) {
-    localStorage.setItem("data", JSON.stringify({}));
-}
-
-let data = JSON.parse(localStorage.getItem("data"));
-
-if (!Array.isArray(data)) {
-    data = [data];
-}
-
-console.log(data);
-
-
-add.addEventListener("click", () => {
-    hidden.style.visibility = "visible";
-})
-
-
-
-cancel.addEventListener("click", () => {
-    hidden.style.visibility = "hidden";
-})
-
-let cloning = () => {
-
-    data.forEach((data) => {
-        let clone = divClone.cloneNode(true);
-        clone.style.display = "flex";
-        let but = clone.querySelector("button");
-        clone.querySelector("h2").innerText = data.topic;
-        but.setAttribute("id", data.topic);
-        console.log(but.getAttribute("id"));
-        main.appendChild(clone);
-    })
-}
-cloning();
-
-
-let donebut = main.querySelectorAll("button");
-
-
-let addbut = (done) => {
-    done.forEach((but) => {
-        but.addEventListener("click", () => {
-            console.log("clicked")
-            let id = but.getAttribute("id");
-            let newData = data.filter((item) => {
-                if (item.topic != id) {
-                    return item;
-                }
-            })
-            localStorage.setItem("data", JSON.stringify(newData));
-            location.reload();
-        })
-    })
-}
-addbut(donebut);
-
-
-add2.addEventListener("click", () => {
-    if (input.value == "") {
-        alert("Please enter a topic");
+    if (tasks.length === 0) {
+        tasksList.innerHTML = '<div class="empty-state"><p>No tasks yet!</p><p>Click "Add Task" to get started.</p></div>';
+        return;
     }
-    else {
-        let obj = { topic: input.value };
-        data.push(obj);
-        localStorage.setItem("data", JSON.stringify(data));
-        hidden.style.visibility = "hidden";
-        let clone = divClone.cloneNode(true);
-        clone.style.display = "flex";
-        let but = clone.querySelector("button");
-        clone.querySelector("h2").innerText = obj.topic;
-        but.setAttribute("id", obj.topic);
-        main.appendChild(clone);
-        donebut = main.querySelectorAll("button");
-        addbut(donebut);
-        input.value = "";
+
+    tasks.forEach((task, index) => {
+        const taskItem = document.createElement('div');
+        taskItem.className = 'task-item';
+        
+        taskItem.innerHTML = `
+            <div class="task-text">${task}</div>
+            <div class="task-actions">
+                <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
+            </div>
+        `;
+        
+        tasksList.appendChild(taskItem);
+    });
+};
+
+const addTask = () => {
+    const taskText = taskInput.value.trim();
+    
+    if (taskText === '') {
+        alert('Please enter a task!');
+        return;
     }
-})
+    
+    tasks.push(taskText);
+    saveTasks();
+    renderTasks();
+    closeModal();
+    taskInput.value = '';
+};
 
+const deleteTask = (index) => {
+    tasks.splice(index, 1);
+    saveTasks();
+    renderTasks();
+};
 
-refresh.addEventListener("click", () => {
-    location.reload();
-})
+const openModal = () => {
+    modal.classList.add('active');
+    taskInput.focus();
+};
 
+const closeModal = () => {
+    modal.classList.remove('active');
+    taskInput.value = '';
+};
 
+addBtn.addEventListener('click', openModal);
+cancelBtn.addEventListener('click', closeModal);
+saveBtn.addEventListener('click', addTask);
 
+taskInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        addTask();
+    }
+});
 
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal();
+    }
+});
+
+window.deleteTask = deleteTask;
+
+renderTasks();

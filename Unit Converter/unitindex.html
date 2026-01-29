@@ -4,50 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Modern unit converter for length, area, volume, mass, data, speed, time, and temperature">
     <title>Unit Converter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600&family=Roboto+Mono:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="unitstyle.css">
-    <link rel="shortcut icon" href="exchange.png" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="heading">
-            <h1>Unit Converter</h1>
-            <button id="reset">Reset</button>
+    <div class="container">
+        <h1>Unit Converter</h1>
+
+        <div class="categories">
+            <button class="category-btn active" data-category="length">Length</button>
+            <button class="category-btn" data-category="area">Area</button>
+            <button class="category-btn" data-category="volume">Volume</button>
+            <button class="category-btn" data-category="mass">Mass</button>
+            <button class="category-btn" data-category="data">Data</button>
+            <button class="category-btn" data-category="speed">Speed</button>
+            <button class="category-btn" data-category="time">Time</button>
+            <button class="category-btn" data-category="temperature">Temperature</button>
         </div>
-    </header>
-    <main>
-        <div class="button">
-            <button class="" id="length">Length</button>
-            <button class="" id="area">Area</button>
-            <button class="" id="volume">Volume</button>
-            <button class="" id="mass">Mass</button>
-            <button class="" id="data">Data</button>
-            <button class="" id="speed">Speed</button>
-            <button class="" id="time">Time</button>
-            <button class="" id="temperature">Temperature</button>
-        </div>
-        <div class="main">
-           <div class="input">
-            <div class="from">
-                <select name="from" id="from">
-                </select>
-                <input type="number" class="infrom" min="1">
+
+        <div class="converter">
+            <div class="input-group">
+                <label for="from-unit">From:</label>
+                <select id="from-unit"></select>
+                <input type="number" id="from-value" placeholder="Enter value" value="1" step="any">
             </div>
 
-               <img src="two-arrows.png" alt="Convert" id="img">
+            <button class="swap-btn">⇄</button>
 
-               <div class="to">
-                <select name="to" id="to">
-                </select>
-                <input type="number" class="into" min="1">
-               </div>
-           </div>
-           <button id="convert">Convert</button>
+            <div class="input-group">
+                <label for="to-unit">To:</label>
+                <select id="to-unit"></select>
+                <input type="number" id="to-value" placeholder="Result" readonly>
+            </div>
         </div>
-    </main>
-    <footer>
-        <div>Have a Happpy Conversion!</div>
-    </footer>
+
+        <button class="convert-btn">Convert</button>
+        <button class="reset-btn">Reset</button>
+    </div>
 
     <script src="unitscript.js"></script>
 </body>

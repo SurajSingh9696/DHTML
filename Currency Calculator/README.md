@@ -1,29 +1,54 @@
-# Currency Calculator
+# Currency Converter
 
 ## Description
-A web-based currency converter built with HTML, CSS, and JavaScript. It allows users to convert amounts between different currencies using real-time exchange rates from an API.
+A modern, real-time currency converter with live exchange rates and country flags. Convert between 30+ popular currencies with an intuitive, responsive interface.
 
 ## Features
-- Select from and to currencies from a list of major currencies
-- Display country flags for selected currencies
-- Input amount to convert
-- Fetch real-time exchange rates from Free Currency API
-- Display conversion result
-- Default conversion from USD to INR
+- **Real-Time Exchange Rates**: Live currency conversion using Free Currency API
+- **30+ Popular Currencies**: Access major currencies worldwide
+- **Country Flags**: Visual currency identification with flag icons
+- **Modern UI**: Clean, gradient-based interface with smooth interactions
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
+- **Instant Conversion**: Click to convert or get automatic rates
+- **Error Handling**: Graceful fallback for API issues
+
+## Supported Currencies
+EUR, USD, JPY, BGN, CZK, DKK, GBP, HUF, PLN, RON, SEK, CHF, ISK, HRK, RUB, TRY, AUD, BRL, CAD, CNY, HKD, IDR, ILS, INR, KRW, MXN, MYR, NZD, PHP, SGD, THB, ZAR
 
 ## Tech Stack
-- **Frontend:** HTML, CSS, JavaScript
-- **API:** Free Currency API
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling with gradients and animations
+- **JavaScript (Vanilla)**: Async/await for API calls
+- **API**: Free Currency API for real-time rates
+- **External**: Flags API for country flags
+- **Google Fonts**: Poppins
 
 ## How to Use
-1. Open `currindex.html` in a web browser.
-2. Enter the amount to convert.
-3. Select the "From" currency.
-4. Select the "To" currency.
-5. Click "Calculate" to get the converted amount.
+1. Open `currindex.html` in a web browser
+2. Enter the amount to convert
+3. Select the "From" currency
+4. Select the "To" currency
+5. Click "Convert" to get the converted amount
+6. Result displays automatically with live exchange rate
 
-## Installation
-No installation required. Just open the HTML file in a browser. Note: Requires internet connection for API calls.
+## Files
+- `currindex.html` - Main HTML structure
+- `currcss.css` - Modern responsive styling
+- `currscript.js` - Currency conversion logic and API integration
 
-## API Key
-The script includes a placeholder API key. For production use, obtain your own key from [Free Currency API](https://freecurrencyapi.com/).
+## APIs Used
+- **Free Currency API**: Real-time exchange rates
+  - Base URL: https://api.freecurrencyapi.com/v1/latest
+- **Flags API**: Country flag images
+  - Format: https://flagsapi.com/{country_code}/flat/64.png
+
+## Browser Support
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Notes
+- Requires internet connection for API calls
+- Exchange rates update in real-time
+- Default conversion: 1 USD to INR

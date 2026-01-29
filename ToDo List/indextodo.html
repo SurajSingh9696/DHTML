@@ -4,40 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Modern task management with local storage">
     <title>ToDo List</title>
-    <link rel="shortcut icon" href="checklist.png" type="image/x-icon">
-    <link rel="stylesheet" href="todospecial.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="todosimple.css">
 </head>
 <body>
-    <header>
-        <div><h1>ToDo List</h1></div>
-        <div class="button">
-            <button id="refresh">Refresh</button>
-            <button id="add">Add</button>
+    <div class="container">
+        <div class="header">
+            <h1>✓ ToDo List</h1>
+            <div class="header-buttons">
+                <button id="add-btn" class="add-btn">+ Add Task</button>
+            </div>
         </div>
-    </header>
 
-    <main>
-            <div class="data">
-                <h2 id="topic">Do Projects</h2>
-                <button id="hello">Done</button>
-            </div>
+        <div class="tasks-container" id="tasks-list"></div>
+    </div>
 
-        
-    </main>
-
-    <div class="above">
-        <div class="adddata">
-            <h2>Task</h2>
-            <div class="input">
-                <input type="text" name="text" id="todo">
-            </div>
-            <div class="addbutton">
-                <button id="cancel">Cancel</button>
-                <button id="add2">Add</button>
+    <div class="modal" id="add-modal">
+        <div class="modal-content">
+            <h2>Add New Task</h2>
+            <input type="text" id="task-input" placeholder="Enter task description..." />
+            <div class="modal-buttons">
+                <button id="cancel-btn" class="cancel-btn">Cancel</button>
+                <button id="save-btn" class="save-btn">Add Task</button>
             </div>
         </div>
     </div>
+
     <script src="todo.js"></script>
 </body>
 </html>

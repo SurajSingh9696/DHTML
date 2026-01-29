@@ -3,33 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Classic Stone Paper Scissors game">
     <link rel="stylesheet" href="stylesps.css">
-    <link rel="icon" href="favicon.ico">
-    <title>Stone-Paper-Scissor</title>
+    <title>Stone Paper Scissors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600;700&family=Roboto+Mono:wght@600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Stone-Paper-Scissor</h1>
-    <div class="choices">
-        <button class="choice" id="Stone"></button>
-        <button class="choice" id="Paper"></button>
-        <button class="choice" id="Scissor"></button>
-    </div>
-    <div class="msg">
-        <p id="msg">Make the Choice</p>
-    </div>
-    <div class="score">
-        <div class="player">
-            <p>Player:</p>
-            <p id="player-score">0</p>
-            
-        </div>
-        <div class="comp">
-             <p>Computer:</p>
-            <p id="comp-score">0</p>
-           
-        </div>
-    </div>
+    <div class="container">
+        <header>
+            <h1>Stone Paper Scissors</h1>
+            <p class="subtitle">Beat the Computer!</p>
+        </header>
 
+        <div class="game-section">
+            <h2 class="instruction">Choose Your Move</h2>
+            <div class="choices">
+                <button class="choice" id="Stone" title="Stone">🪨</button>
+                <button class="choice" id="Paper" title="Paper">📄</button>
+                <button class="choice" id="Scissor" title="Scissors">✂️</button>
+            </div>
+        </div>
+
+        <div class="msg-section">
+            <p id="msg">Make your choice</p>
+        </div>
+
+        <div class="score-section">
+            <div class="player">
+                <div class="score-item">
+                    <p class="score-label">You</p>
+                    <p id="player-score">0</p>
+                </div>
+            </div>
+            <div class="comp">
+                <div class="score-item">
+                    <p class="score-label">Computer</p>
+                    <p id="comp-score">0</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-section">
+            <button id="reset-game" class="reset-btn">Reset Game</button>
+        </div>
+    </div>
     <script src="scriptsps.js"></script>
 </body>
 </html>

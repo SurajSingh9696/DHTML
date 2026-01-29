@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="calstyle2.css">
-    <link rel="shortcut icon" href="icons8-calculator-120.png" type="image/x-icon">
+    <meta name="description" content="Modern calculator with advanced operations">
     <title>Calculator</title>
+    <link rel="stylesheet" href="calstyle2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Roboto+Mono:wght@400;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
+        <h1 class="title">Calculator</h1>
         <div class="subdisplay">
             <p></p>
         </div>
@@ -17,37 +19,42 @@
             <p>0</p>
         </div>
    
-    <div class="allbut">
-        
-           <div class="but">
-            <button class="op" value="%">%</button>
-            <button id="alldel" value="CE">CE</button>
-            <button class="op" value="^">^</button>
-            <button class="op" value="/">/</button>
-           </div>
-           <div class="but">
-            <button class="dis" value="7">7</button>
-            <button class="dis" value="8">8</button>
-            <button class="dis" value="9">9</button>
-            <button class="op" value="*">*</button>
-           </div>
-           <div class="but">
-            <button class="dis" value="6">6</button>
-            <button class="dis" value="5">5</button>
-            <button class="dis" value="4">4</button>
-            <button class="op" value="-">-</button>
-           </div>
-           <div class="but">
-            <button class="dis" value="3">3</button>
-            <button class="dis" value="2">2</button>
-            <button class="dis" value="1">1</button>
-            <button class="op" value="+">+</button>
-           </div>
-           <div class="but">
-            <button class="dis" value="00">00</button>
-            <button class="dis" value="0">0</button>
-            <button id="dot" class="dis" value=".">.</button>
-            <button class="equal" value="=">=</button>
+        <div class="allbut">
+            <div class="but">
+                <button class="op" value="%">%</button>
+                <button id="alldel" value="CE">CE</button>
+                <button class="op" value="^">^</button>
+                <button class="op" value="/">÷</button>
+            </div>
+            <div class="but">
+                <button class="dis" value="7">7</button>
+                <button class="dis" value="8">8</button>
+                <button class="dis" value="9">9</button>
+                <button class="op" value="*">×</button>
+            </div>
+            <div class="but">
+                <button class="dis" value="4">4</button>
+                <button class="dis" value="5">5</button>
+                <button class="dis" value="6">6</button>
+                <button class="op" value="-">−</button>
+            </div>
+            <div class="but">
+                <button class="dis" value="1">1</button>
+                <button class="dis" value="2">2</button>
+                <button class="dis" value="3">3</button>
+                <button class="op" value="+">+</button>
+            </div>
+            <div class="but">
+                <button class="dis" value="00">00</button>
+                <button class="dis" value="0">0</button>
+                <button id="dot" class="dis" value=".">.</button>
+                <button class="equal" value="=">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="calscript.js"></script>
+</body>
+</html>
            </div> 
     </div>
     <!-- <div class="equal">

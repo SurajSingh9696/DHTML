@@ -1,25 +1,50 @@
 # Tic-Tac-Toe (Cris Cross)
 
 ## Description
-A simple web-based Tic-Tac-Toe game built with HTML, CSS, and JavaScript. Players take turns marking X or O on a 3x3 grid, with win detection and draw handling.
+A modern, interactive Tic-Tac-Toe game with beautiful UI and smooth gameplay. Play against a friend on the same device with automatic win detection and draw handling.
 
 ## Features
-- Two-player game (Player O starts first)
-- 3x3 grid for gameplay
-- Automatic win detection for all possible patterns
-- Draw detection when all cells are filled without a winner
-- Reset button to start a new game
-- Alerts for win or draw
+- **Two-Player Gameplay**: Players alternate between X and O
+- **Automatic Win Detection**: Detects winner across all 8 winning patterns
+- **Draw Detection**: Identifies when the game ends in a tie
+- **Responsive Design**: Plays smoothly on desktop, tablet, and mobile
+- **Modern UI**: Gradient background, smooth animations, and visual feedback
+- **Game Reset**: Easy button to start a fresh game
+- **Instant Feedback**: Alerts notify winner or draw status
+
+## Winning Patterns
+- **Rows**: Top, Middle, Bottom
+- **Columns**: Left, Center, Right
+- **Diagonals**: Both diagonals
 
 ## Tech Stack
-- **Frontend:** HTML, CSS, JavaScript
+- **HTML5**: Semantic markup
+- **CSS3**: Modern styling with gradients and animations
+- **JavaScript (Vanilla)**: Pure JS without dependencies
+- **Google Fonts**: Poppins
 
-## How to Use
-1. Open `indexcriscross.html` in a web browser.
-2. Click on any empty cell to place your mark (O or X).
-3. Players alternate turns.
-4. The game will alert the winner or if it's a draw.
-5. Click "Reset" to start a new game.
+## How to Play
+1. Open `indexcriscross.html` in a web browser
+2. Player X makes the first move
+3. Click any empty cell to place your mark
+4. Players alternate turns
+5. First player to get 3 marks in a row (horizontally, vertically, or diagonally) wins
+6. If all cells are filled without a winner, it's a draw
+7. Click "New Game" to start fresh
 
-## Installation
-No installation required. Just open the HTML file in a browser.
+## Game Rules
+- 3x3 grid with 9 total cells
+- Players take turns placing their mark
+- No cell can be used twice
+- Game ends when someone wins or all cells are filled
+
+## Files
+- `indexcriscross.html` - Main game interface
+- `style.css` - Modern styling
+- `script.js` - Game logic and win detection
+
+## Browser Support
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)

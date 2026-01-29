@@ -1,103 +1,39 @@
-const countries = {
-    "Afghanistan": "AF",
-    "Albania": "AL",
-    "Algeria": "DZ",
-    "Andorra": "AD",
-    "Angola": "AO",
-    "Antigua and Barbuda": "AG",
-    "Argentina": "AR",
-    "Armenia": "AM",
-    "Australia": "AU",
-    "Austria": "AT",
-    "Azerbaijan": "AZ",
-    "Bahamas": "BS",
-    "Bahrain": "BH",
-    "Bangladesh": "BD",
-    "Barbados": "BB",
-    "Belarus": "BY",
-    "Belgium": "BE",
-    "Belize": "BZ",
-    "Benin": "BJ",
-    "Bhutan": "BT",
-    "Bolivia": "BO",
-    "Bosnia and Herzegovina": "BA",
-    "Botswana": "BW",
-    "Brazil": "BR",
-    "Brunei": "BN",
-    "Bulgaria": "BG",
-    "Burkina Faso": "BF",
-    "Burundi": "BI",
-    "Cabo Verde": "CV",
-    "Cambodia": "KH",
-    "Cameroon": "CM",
-    "Canada": "CA",
-    "Central African Republic": "CF",
-    "Chad": "TD",
-    "Chile": "CL",
-    "China": "CN",
-    "Colombia": "CO",
-    "Comoros": "KM",
-    "Congo, Democratic Republic of the": "CD",
-    "Congo, Republic of the": "CG",
-    "Costa Rica": "CR",
-    "Croatia": "HR",
-    "Cuba": "CU",
-    "Cyprus": "CY",
-    "Czech Republic": "CZ",
-    "Denmark": "DK",
-    "Djibouti": "DJ",
-    "Dominica": "DM",
-    "Dominican Republic": "DO",
-    "Ecuador": "EC",
-    "Egypt": "EG",
-    "El Salvador": "SV",
-    "Equatorial Guinea": "GQ",
-    "Eritrea": "ER",
-    "Estonia": "EE",
-    "Eswatini": "SZ",
-    "Ethiopia": "ET",
-    "Fiji": "FJ",
-    "Finland": "FI",
-    "France": "FR",
-    "Gabon": "GA",
-    "Gambia": "GM",
-    "Georgia": "GE",
-    "Germany": "DE",
-    "Ghana": "GH",
-    "Greece": "GR",
-    "Grenada": "GD",
-    "Guatemala": "GT",
-    "Guinea": "GN",
-    "Guinea-Bissau": "GW",
-    "Guyana": "GY",
-    "Haiti": "HT",
-    "Honduras": "HN",
-    "Hungary": "HU",
-    "Iceland": "IS",
-    "India": "IN",
-    "Indonesia": "ID",
-    "Iran": "IR",
-    "Iraq": "IQ",
-    "Ireland": "IE",
-    "Israel": "IL",
-    "Italy": "IT",
-    "Jamaica": "JM",
-    "Japan": "JP",
-    "Jordan": "JO",
-    "Kazakhstan": "KZ",
-    "Kenya": "KE",
-    "Kiribati": "KI",
-    "Korea, North": "KP",
-    "Korea, South": "KR",
-    "Kuwait": "KW",
-    "Kyrgyzstan": "KG",
-    "Laos": "LA",
-    "Latvia": "LV",
-    "Lebanon": "LB",
-    "Lesotho": "LS",
-    "Liberia": "LR",
-    "Libya": "LY",
-    "Liechtenstein": "LI",
+const nameInput = document.querySelector("#name");
+const predictBtn = document.querySelector("#but");
+const outputDiv = document.querySelector("#output");
+const genderValue = document.querySelector("#genderValue");
+const accuracy = document.querySelector("#accuracy");
+
+const predictGender = async () => {
+    const name = nameInput.value.trim();
+    
+    if (!name) {
+        alert("Please enter a name");
+        return;
+    }
+
+    try {
+        const response = await fetch(`https://api.genderize.io?name=${name}`);
+        const data = await response.json();
+
+        if (!data.gender) {
+            genderValue.textContent = "Unknown";
+            accuracy.textContent = "0";
+        } else {
+            genderValue.textContent = data.gender.charAt(0).toUpperCase() + data.gender.slice(1);
+            accuracy.textContent = Math.round(data.probability * 100);
+        }
+        
+        outputDiv.style.display = "flex";
+    } catch (error) {
+        alert("Error fetching gender prediction. Please try again.");
+    }
+};
+
+predictBtn.addEventListener("click", predictGender);
+nameInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") predictGender();
+});
     "Lithuania": "LT",
     "Luxembourg": "LU",
     "Madagascar": "MG",

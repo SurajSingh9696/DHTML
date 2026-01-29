@@ -3,28 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="give your gender by your name">
-    <title>Gender By Name</title>
+    <meta name="description" content="Predict your gender based on your name using gender prediction API">
+    <title>Gender Guesser</title>
     <link rel="stylesheet" href="ggstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <div class="container">
-        <div class="heading"><h1>Gender By Name</h1></div>
-   
-    <div class="input">
-        <div class="select">
-            <img src="earth.png" id="flag">
-            <select name="country" id="country">
-                <option value="global">Global</option>
-            </select>
-        </div>
-        <input type="text" placeholder="Enter Your Name ..." id="name">
-        <button id="but"><img src="search.png" alt="Search"></button>
+    <div class="heading"><h1>Gender Guesser</h1></div>
+    <p class="subtitle">Discover your probable gender</p>
+    <div class="input-group">
+        <input type="text" placeholder="Enter your name" id="name" class="name-input">
+        <button id="but" class="search-btn">Predict</button>
     </div>
-    <div class="output">
-        <p id="output"><b>Ans</b>:</p>
+    <div class="output" id="output" style="display: none;">
+        <div class="gender-card">
+            <p class="gender-label">Predicted Gender</p>
+            <p id="genderValue" class="gender-value">--</p>
+            <p class="gender-accuracy">Confidence: <span id="accuracy">--</span>%</p>
+        </div>
     </div>
 </div>
-    <script src="ggscript.js"></script>
+<script src="ggscript.js"></script>
 </body>
 </html>

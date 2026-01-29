@@ -3,52 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <title>Weather</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Real-time weather forecasting for any location">
+    <title>Weather Forecaster</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600&family=Roboto+Mono:wght@600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="wfstyle.css">
-    <link rel="shortcut icon" href="icons8-weather-120.png" type="image/x-icon">
 </head>
 <body>
     <div class="container">
-        <div class="head">
-            <h1>Weather</h1>
-        </div>
-        <p id="p">Enter City</p>
-        <div class="form">
-            <form id="nosub">
-                <div><input type="text" id="cityname" value="Lucknow"></div>
-            </form>
-        </div>
-        <div class="getweather">
-            <button id="forecast">Forecast</button>
-        </div>
-        <div class="city">
-            <h2 id="city">Lucknow</h2>
-            <pre> </pre>
-            <div class="location">
-                <img src="loco.png" alt="location">
-                <a href="https://www.google.co.in/maps/@26.8220189,80.9097119,14z?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D" id="geoloco"><p id="latlon">28.67/80.64</p></a>
-            </div>
-        </div>
+        <h1>🌤️ Weather Forecaster</h1>
         
-        <div class="main">
-            <div class="temp">
-                <p id="type">Clear</p>
-                <div class="tempimg">
-                    <p id="tempc">17 C</p>
-                    <img src="" alt="haze" id="img">
-                </div>
-                <p class="feellike">Feels like 17 C</p>
+        <div class="search-box">
+            <input type="text" id="city-input" placeholder="Enter city name..." value="London">
+            <button id="search-btn">Search</button>
+        </div>
+
+        <div class="weather-info">
+            <div class="city-header">
+                <h2 id="city-name">London</h2>
+                <p id="coordinates">Lat: -- | Lon: --</p>
             </div>
-            <div class="detail">
-                <div class="center">
-                <p class="minmax">Min/Max: 21C / 23C</p>
-                <p id="humidity">Humidity: 60%</p>
-                <p class="wind">Wind: 5kph</p>
+
+            <div class="current-weather">
+                <div class="weather-left">
+                    <p id="weather-condition">Clear Sky</p>
+                    <p id="temperature">20°C</p>
+                    <p id="feels-like">Feels like 20°C</p>
                 </div>
+                <div class="weather-right">
+                    <p class="detail-item">
+                        <span>💧 Humidity:</span>
+                        <span id="humidity">--</span>
+                    </p>
+                    <p class="detail-item">
+                        <span>💨 Wind Speed:</span>
+                        <span id="wind-speed">--</span>
+                    </p>
+                    <p class="detail-item">
+                        <span>🌡️ Min/Max:</span>
+                        <span id="min-max">--</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="location-link">
+                <a id="maps-link" href="#" target="_blank">📍 View on Google Maps</a>
             </div>
         </div>
     </div>
+
     <script src="wfscript.js"></script>
 </body>
 </html>

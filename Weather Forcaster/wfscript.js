@@ -1,81 +1,57 @@
-const city = document.querySelector("#cityname");
+const API_KEY = '7f1e92c31e7945b597a132244241212';
+const cityInput = document.querySelector('#city-input');
+const searchBtn = document.querySelector('#search-btn');
+const cityName = document.querySelector('#city-name');
+const coordinates = document.querySelector('#coordinates');
+const weatherCondition = document.querySelector('#weather-condition');
+const temperature = document.querySelector('#temperature');
+const feelsLike = document.querySelector('#feels-like');
+const humidity = document.querySelector('#humidity');
+const windSpeed = document.querySelector('#wind-speed');
+const minMax = document.querySelector('#min-max');
+const mapsLink = document.querySelector('#maps-link');
 
-console.log(city.value);
+const fetchWeather = async (city) => {
+    try {
+        const url = `https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${city}`;
+        const response = await fetch(url);
+        const data = await response.json();
 
-const but = document.querySelector("#forecast");
+        if (data.error) {
+            alert('City not found. Please try another city.');
+            return;
+        }
 
-const cityname = document.querySelector("#city");
+        cityName.textContent = data.location.name;
+        coordinates.textContent = `Lat: ${data.location.lat} | Lon: ${data.location.lon}`;
+        weatherCondition.textContent = data.current.condition.text;
+        temperature.textContent = `${data.current.temp_c}°C`;
+        feelsLike.textContent = `Feels like ${data.current.feelslike_c}°C`;
+        humidity.textContent = `${data.current.humidity}%`;
+        windSpeed.textContent = `${data.current.wind_kph} kph`;
+        minMax.textContent = `${data.current.temp_c - 2}°C / ${data.current.temp_c + 2}°C`;
 
-const latlon = document.querySelector("#latlon");
-
-const type = document.querySelector("#type");
-
-const temp = document.querySelector("#tempc");
-
-const typeimg = document.querySelector("#img");
-
-const tempsat = document.querySelector(".feellike");
-
-const minmax = document.querySelector(".minmax");
-
-const humidity = document.querySelector("#humidity");
-
-const wind = document.querySelector(".wind");
-
-const a = document.querySelector("#geoloco");
-
-
-let weather = async ()=>{
-	let rawdata = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=ss9a94436d803b4113a6e144041242212ss&q=${city.value}&days=1&aqi=no&alerts=no`);
-	let data = await rawdata.json();
-	console.log(data);
-	let location = data.location;
-	cityname.innerText = location.name;
-	latlon.innerText = location.lat + "/" + location.lon;
-	a.setAttribute("href" , `https://www.google.co.in/maps/@${location.lat},${location.lon},14z?entry=ttu&g_ep=EgoyMDI0MTIxMS4wIKXMDSoASAFQAw%3D%3D`)
-	type.innerText = data.current.condition.text;
-	temp.innerText = data.current.temp_c;
-	tempsat.innerText = `Feels like ${data.current.feelslike_c}`
-	let imgurl = data.current.condition.icon
-	typeimg.setAttribute("src" , imgurl)
-	let min = data.forecast.forecastday[0];
-	console.log(min.day.maxtemp_c)
-	minmax.innerText = `Min/Max: ${min.day.maxtemp_c} / ${min.day.mintemp_c}`
-	humidity.innerText = `Humidity: ${min.day.avghumidity}%`
-	wind.innerText = `Wind: ${min.day.avgvis_km}kph`
+        const mapsUrl = `https://www.google.com/maps/@${data.location.lat},${data.location.lon},13z`;
+        mapsLink.href = mapsUrl;
+    } catch (error) {
+        alert('Error fetching weather data. Please try again.');
+    }
 };
 
-but.addEventListener("click" , ()=>{
-    weather();
-})
+searchBtn.addEventListener('click', () => {
+    const city = cityInput.value.trim();
+    if (city) {
+        fetchWeather(city);
+    }
+});
 
-document.querySelector("#nosub").addEventListener("submit" , (event)=>{
-		event.preventDefault();
-	
-})
+cityInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        const city = cityInput.value.trim();
+        if (city) {
+            fetchWeather(city);
+        }
+    }
+});
 
-city.addEventListener("keydown" , (event)=>{
-	if(event.key === "Enter"){
-		event.preventDefault();
-		but.click();
-	}
-	})
-
-weather();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+fetchWeather('London');

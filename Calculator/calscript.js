@@ -1,109 +1,99 @@
-const sub = document.querySelector(".subdisplay p");
-const main = document.querySelector(".maindisplay p");
+const subdisplay = document.querySelector(".subdisplay p");
+const maindisplay = document.querySelector(".maindisplay p");
+const numButtons = document.querySelectorAll(".dis");
+const operatorButtons = document.querySelectorAll(".op");
+const clearBtn = document.querySelector("#alldel");
+const equalsBtn = document.querySelector(".equal");
+const dotBtn = document.querySelector("#dot");
 
-console.log(sub.innerText);
-console.log(main.innerText);
+let currentValue = "";
+let previousValue = "";
+let displayHistory = "";
+let currentOperator = "";
 
-const butdis = document.querySelectorAll(".dis");
+const updateDisplay = () => {
+    maindisplay.textContent = currentValue || "0";
+    subdisplay.textContent = displayHistory;
+};
 
-const butop = document.querySelectorAll(".op");
-
-const butalldel = document.querySelector("#alldel");
-
-const eq = document.querySelector(".equal");
-
-const dot = document.querySelector("#dot");
-
-
-let val = "";
-let valsub = "";
-let value1 = 0;
-let value2 = 0;
-let operator = "";
-console.log(butdis)
-
-let ans = 0;
-
-butdis.forEach((but) =>{
-    but.addEventListener("click", () => {
-        console.log(but.value);
-        val = val + but.value;
-        if(parseInt(val) > 9999999999999999999){
-            val = "1";
+numButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        if (btn.value === ".") {
+            if (!currentValue.includes(".")) {
+                currentValue += ".";
+                dotBtn.disabled = true;
+            }
+        } else {
+            if (currentValue.length < 16) {
+                currentValue += btn.value;
+            }
         }
-        if(but.value === "."){
-            but.disabled = true;
+        updateDisplay();
+    });
+});
+
+operatorButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        if (currentValue === "") return;
+        
+        if (previousValue && currentOperator) {
+            calculateResult();
         }
-        valsub = valsub + but.value;
-        sub.innerText = valsub;
-        main.innerText = val;
-        console.log(parseFloat(val))
-    })
-})
+        
+        previousValue = currentValue;
+        currentOperator = btn.value;
+        displayHistory = `${previousValue} ${btn.value} `;
+        currentValue = "";
+        dotBtn.disabled = false;
+        updateDisplay();
+    });
+});
 
-butop.forEach((but) =>{
-    but.addEventListener("click", () => {
-        console.log(but.value)
-        dot.disabled = false;
-        value1 = parseFloat(val);
-        valsub = `${valsub} ${but.value} `;
-        val = "";
-        operator = but.value;
-        sub.innerText = valsub;
-        main.innerText = val;
-        butop.forEach((but1) =>{
-            but1.disabled = true;
-        })
-    })
-})
+const calculateResult = () => {
+    if (!previousValue || !currentOperator || !currentValue) return;
 
-eq.addEventListener("click" , ()=>{
-    value2 = parseFloat(val);
-    switch(operator){
+    let result;
+    const num1 = parseFloat(previousValue);
+    const num2 = parseFloat(currentValue);
+
+    switch (currentOperator) {
         case "+":
-        ans = value1 + value2;
-        break;
+            result = num1 + num2;
+            break;
         case "-":
-        ans = value1 - value2;
-        break;
+            result = num1 - num2;
+            break;
         case "*":
-        ans = value1 * value2;
-        break;
-        case "/":
-        ans = value1 / value2;
-        break;
+            result = num1 * num2;
+            break;
+        case "÷":
+            result = num2 !== 0 ? num1 / num2 : "Error";
+            break;
         case "%":
-        ans = (value1 / value2)*100;
-        break; 
+            result = (num1 * num2) / 100;
+            break;
         case "^":
-        ans = value1 ** value2;
-        break;       
+            result = Math.pow(num1, num2);
+            break;
+        default:
+            return;
     }
-    if(ans > 9999999999999999999){
-        ans = "1";
-    }
-    val = ans;
-    main.innerText = val;
-    valsub = ans;
-    sub.innerText = valsub;
-    butop.forEach((but)=>{
-        but.disabled = false;
-    })
 
-    console.log(value2)
-})
+    currentValue = result > 9999999999999999 ? "Overflow" : result.toString().slice(0, 16);
+    previousValue = "";
+    currentOperator = "";
+    displayHistory = "";
+    dotBtn.disabled = false;
+    updateDisplay();
+};
 
-butalldel.addEventListener("click" , ()=>{
-    val = "";
-    ans = 0;
-    valsub = "";
-    value1 = 0;
-    value2 = 0;
-    operator = "";
-    sub.innerText = valsub;
-    main.innerText = val;
-    butop.forEach((but)=>{
-        but.disabled = false;
-    })
-    dot.disabled = false;
-})
+equalsBtn.addEventListener("click", calculateResult);
+
+clearBtn.addEventListener("click", () => {
+    currentValue = "";
+    previousValue = "";
+    displayHistory = "";
+    currentOperator = "";
+    dotBtn.disabled = false;
+    updateDisplay();
+});

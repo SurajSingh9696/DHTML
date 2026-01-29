@@ -4,46 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Get the time of any zone or coordinate">
-    <title>Get Time</title>
+    <meta name="description" content="Get the time for any timezone or geographical coordinates">
+    <title>Get Any Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@400;500;600&family=Roboto+Mono:wght@600;700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="gtstyle.css">
-    <link rel="shortcut icon" href="clock.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <div class="heading">
-            <h1>Get Time</h1>
+        <h1>⏰ Get Any Time</h1>
+
+        <div class="modes">
+            <button class="mode-btn active" data-mode="timezone">Timezone</button>
+            <button class="mode-btn" data-mode="coordinates">Coordinates</button>
         </div>
-        <div class="input">
-           <div class="containtimezone">
-            <p>Enter the Timezone</p>
-            <div class="timezone">
-                <select name="timezone" id="gettimezone"></select>
-                <button id="buttimezone">Get</button>
-            </div>
-           </div>
-            <div class="containcoordinates">
-                <p>Enter the Coordinates</p>
-            <div class="coordinates">
-               <div> 
-                <label for="lat">Lat:</label>
-                <input type="number" id="lat" name="lat" step="any"  value="26.8467">
-                </div>
-                <div>
-                <label for="long">Long:</label>
-                <input type="number" id="long" name="long"  value="80.9462">
-                </div>
-                <button id="butcoordinates">Get</button>
-            </div>
+
+        <div id="timezone-mode" class="mode-content active">
+            <div class="input-group">
+                <label for="timezone-select">Select Timezone:</label>
+                <select id="timezone-select"></select>
+                <button id="timezone-btn" class="action-btn">Get Time</button>
             </div>
         </div>
+
+        <div id="coordinates-mode" class="mode-content">
+            <div class="coord-inputs">
+                <div class="input-group">
+                    <label for="latitude">Latitude:</label>
+                    <input type="number" id="latitude" placeholder="e.g., 40.7128" step="any">
+                </div>
+                <div class="input-group">
+                    <label for="longitude">Longitude:</label>
+                    <input type="number" id="longitude" placeholder="e.g., -74.0060" step="any">
+                </div>
+            </div>
+            <button id="coordinates-btn" class="action-btn">Get Time</button>
+        </div>
+
         <div class="output">
-            <p id="output">00:00:00</p>
+            <p id="time-display">00:00:00</p>
         </div>
     </div>
+
     <script src="gtscript.js"></script>
 </body>
 </html>

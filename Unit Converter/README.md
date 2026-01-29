@@ -1,30 +1,40 @@
 # Unit Converter
 
 ## Description
-A versatile unit converter web application that supports conversion between various units including length, area, volume, mass, data, speed, time, and temperature.
+A comprehensive unit converter supporting length, area, volume, mass, data, speed, time, and temperature conversions. Features an intuitive dropdown interface with instant conversion results.
 
 ## Features
-- Convert units for length, area, volume, mass, data, speed, time, and temperature
-- Select units from dropdown menus dynamically populated based on category
-- Reset input fields
-- Swap "from" and "to" units easily
-- Uses an external API for accurate conversions
+- ✅ **Multiple Categories**: Length, Area, Volume, Mass, Data, Speed, Time, Temperature
+- ✅ **Extensive Unit Library**: 100+ different units across all categories
+- ✅ **Real-Time Conversion**: Instant results as you enter values
+- ✅ **Bi-Directional**: Convert between any two units seamlessly
+- ✅ **Swap Functionality**: Quickly reverse conversion direction
+- ✅ **Input Validation**: Handles edge cases and invalid inputs
+- ✅ **Modern Interface**: Clean gradient-based UI design
+- ✅ **Responsive Layout**: Mobile-friendly and adaptive
 
 ## Tech Stack
-- **Frontend:** HTML, CSS, JavaScript
-- **API:** Unit conversion API (https://api.apiverve.com)
+- **HTML5**: Semantic structure
+- **CSS3**: Modern gradients and animations
+- **JavaScript**: Real-time conversion engine
+- **Google Fonts**: Poppins typography
 
 ## How to Use
-1. Open `unitindex.html` in a web browser.
-2. Select a category (e.g., Length, Area, Temperature).
-3. Choose the "From" and "To" units.
-4. Enter the value to convert.
-5. Click "Convert" to see the result.
-6. Use the reset button to clear inputs.
-7. Click the arrows icon to swap units.
+1. Open `unitindex.html` in a web browser
+2. Select conversion category
+3. Choose "From" unit from first dropdown
+4. Choose "To" unit from second dropdown
+5. Enter the value to convert
+6. Result appears instantly
+7. Use swap button to reverse direction
 
-## Installation
-No installation required. Just open the HTML file in a browser.
+## Files
+- `unitindex.html` - Main conversion interface
+- `unitstyle.css` - Modern styling
+- `unitscript.js` - Conversion calculation logic
 
-## Note
-Replace `'your api key here'` in `unitscript.js` with your actual API key for the unit conversion API.
+## Browser Support
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
