@@ -1,4 +1,4 @@
-# Finance Tracker
+# Finanger
 
 A modern and feature-rich finance tracking application built with HTML, CSS, and JavaScript.
 
@@ -83,7 +83,7 @@ A modern and feature-rich finance tracking application built with HTML, CSS, and
 
 ## File Structure
 ```
-Finance Tracker/
+Finanger/
 ├── ftindex.html    # Main HTML structure
 ├── ftstyle.css     # Styling and animations
 ├── ftscript.js     # Application logic
@@ -107,3 +107,4 @@ Finance Tracker/
 ---
 
 Made with ❤️ for better financial management
+# Finanger

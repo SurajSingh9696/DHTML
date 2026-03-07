@@ -339,5 +339,5 @@ class FinanceTracker {
 const tracker = new FinanceTracker();
 
 if (tracker.transactions.length === 0) {
-    console.log('Finance Tracker initialized. Add your first transaction!');
+    console.log('Finanger initialized. Add your first transaction!');
 }
